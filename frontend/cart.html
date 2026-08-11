@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopping Cart - CommerceHub</title>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header class="header">
+
+        <div class="header-top">
+            <div class="container">
+                <p>Free Shipping on Orders Over ₹999</p>
+            </div>
+        </div>
+
+        <div class="header-main">
+
+            <div class="container">
+
+                <div class="header-wrapper">
+
+                    <div class="logo">
+                        <a href="index.html">
+                            Commerce<span>Hub</span>
+                        </a>
+                    </div>
+
+                    <nav class="nav">
+
+                        <ul class="nav-list">
+
+                            <li><a href="index.html">Home</a></li>
+
+                            <li><a href="shop.html">Shop</a></li>
+
+                            <li><a href="wishlist.html">Wishlist</a></li>
+
+                            <li><a href="cart.html" class="active">Cart</a></li>
+
+                        </ul>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- Breadcrumb -->
+
+    <section class="breadcrumb">
+
+        <div class="container">
+
+            <ul>
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>Cart</li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Cart -->
+
+    <section class="cart-page">
+
+        <div class="container">
+
+            <h1>Shopping Cart</h1>
+
+            <div class="cart-wrapper">
+
+                <!-- LEFT -->
+
+                <div class="cart-items" id="cartItems">
+
+                </div>
+
+
+                <!-- RIGHT -->
+
+                <div class="cart-summary">
+
+                    <h3>Order Summary</h3>
+
+                    <div class="summary-row">
+
+                        <span>Subtotal</span>
+
+                        <span id="subtotal">
+                            ₹0
+                        </span>
+
+                    </div>
+
+                    <div class="summary-row">
+
+                        <span>Shipping</span>
+
+                        <span>
+                            Free
+                        </span>
+
+                    </div>
+
+                    <div class="summary-row total">
+
+                        <span>Total</span>
+
+                        <span id="total">
+                            ₹0
+                        </span>
+
+                    </div>
+
+                    <button
+class="btn btn-primary btn-block"
+onclick="window.location.href='checkout.html'">
+
+Checkout
+
+</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <p style="text-align:center">
+
+                © 2026 CommerceHub
+
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+
+    <script src="js/api.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <script src="js/cart.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CommerceHub | Admin Orders</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:'Inter',sans-serif;
+
+}
+
+body{
+
+background:#0b1120;
+
+color:#fff;
+
+overflow-x:hidden;
+
+}
+
+/* ========================= */
+
+.dashboard{
+
+display:flex;
+
+min-height:100vh;
+
+}
+
+/* ========================= */
+/* Sidebar */
+/* ========================= */
+
+.sidebar{
+
+width:260px;
+
+background:#111827;
+
+padding:28px 22px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
+
+border-right:1px solid rgba(255,255,255,.08);
+
+}
+
+.logo{
+
+font-size:30px;
+
+font-weight:800;
+
+margin-bottom:45px;
+
+}
+
+.logo span{
+
+color:#ff5b2e;
+
+}
+
+.menu{
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+
+}
+
+.menu a{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+padding:15px 18px;
+
+border-radius:14px;
+
+text-decoration:none;
+
+color:#cbd5e1;
+
+font-weight:500;
+
+transition:.3s;
+
+}
+
+.menu a:hover{
+
+background:#1f2937;
+
+transform:translateX(6px);
+
+}
+
+.menu a.active{
+
+background:#ff5b2e;
+
+color:white;
+
+}
+
+.logout{
+
+background:#ef4444;
+
+padding:15px;
+
+border-radius:14px;
+
+text-align:center;
+
+cursor:pointer;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.logout:hover{
+
+background:#dc2626;
+
+}
+
+/* ========================= */
+/* Main */
+/* ========================= */
+
+.main{
+
+flex:1;
+
+padding:35px;
+
+}
+
+/* ========================= */
+
+.topbar{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:35px;
+
+}
+
+.title h1{
+
+font-size:34px;
+
+font-weight:700;
+
+}
+
+.title p{
+
+margin-top:8px;
+
+color:#94a3b8;
+
+}
+
+.right{
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
+}
+
+/* ========================= */
+/* Search */
+/* ========================= */
+
+.search{
+
+position:relative;
+
+}
+
+.search input{
+
+width:330px;
+
+padding:15px 18px 15px 46px;
+
+background:#111827;
+
+border:none;
+
+outline:none;
+
+border-radius:14px;
+
+color:white;
+
+}
+
+.search i{
+
+position:absolute;
+
+left:16px;
+
+top:16px;
+
+color:#94a3b8;
+
+}
+
+/* ========================= */
+/* Profile */
+/* ========================= */
+
+.profile{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+background:#111827;
+
+padding:10px 16px;
+
+border-radius:40px;
+
+}
+
+.avatar{
+
+width:46px;
+
+height:46px;
+
+border-radius:50%;
+
+background:#ff5b2e;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-weight:700;
+
+font-size:18px;
+
+}
+
+/* ========================= */
+/* Card */
+/* ========================= */
+
+.card{
+
+background:#111827;
+
+padding:28px;
+
+border-radius:22px;
+
+box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+}
+
+.card-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+}
+
+.card-header h2{
+
+font-size:26px;
+
+font-weight:700;
+
+}
+
+.totalOrders{
+
+background:#ff5b2e;
+
+padding:10px 16px;
+
+border-radius:12px;
+
+font-weight:700;
+
+font-size:14px;
+
+}
+/* ========================= */
+/* Table */
+/* ========================= */
+
+.table-wrapper{
+
+overflow-x:auto;
+
+border-radius:16px;
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+min-width:1000px;
+
+}
+
+thead{
+
+background:#1f2937;
+
+}
+
+th{
+
+padding:18px;
+
+text-align:left;
+
+font-size:14px;
+
+font-weight:600;
+
+color:#cbd5e1;
+
+}
+
+td{
+
+padding:18px;
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
+vertical-align:middle;
+
+}
+
+tbody tr{
+
+transition:.25s;
+
+}
+
+tbody tr:hover{
+
+background:#182235;
+
+}
+
+/* ========================= */
+/* Status */
+/* ========================= */
+
+.status{
+
+padding:10px 15px;
+
+border:none;
+
+border-radius:12px;
+
+font-weight:600;
+
+color:white;
+
+cursor:pointer;
+
+outline:none;
+
+}
+
+.pending{
+
+background:#f59e0b;
+
+}
+
+.processing{
+
+background:#3b82f6;
+
+}
+
+.shipped{
+
+background:#8b5cf6;
+
+}
+
+.delivered{
+
+background:#22c55e;
+
+}
+
+.cancelled{
+
+background:#ef4444;
+
+}
+
+/* ========================= */
+/* Delete Button */
+/* ========================= */
+
+.delete{
+
+width:42px;
+
+height:42px;
+
+border:none;
+
+border-radius:12px;
+
+background:#ef4444;
+
+color:white;
+
+cursor:pointer;
+
+font-size:18px;
+
+transition:.3s;
+
+}
+
+.delete:hover{
+
+background:#dc2626;
+
+transform:scale(1.05);
+
+}
+
+/* ========================= */
+/* Responsive */
+/* ========================= */
+
+@media(max-width:1100px){
+
+.sidebar{
+
+width:90px;
+
+}
+
+.logo{
+
+font-size:0;
+
+}
+
+.logo span{
+
+display:none;
+
+}
+
+.menu a{
+
+justify-content:center;
+
+}
+
+.menu a span{
+
+display:none;
+
+}
+
+.main{
+
+padding:20px;
+
+}
+
+.search input{
+
+width:220px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.topbar{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:20px;
+
+}
+
+.right{
+
+width:100%;
+
+flex-direction:column;
+
+align-items:stretch;
+
+}
+
+.search{
+
+width:100%;
+
+}
+
+.search input{
+
+width:100%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<div>
+
+<div class="logo">
+
+Commerce<span>Hub</span>
+
+</div>
+
+<div class="menu">
+
+<a href="admin-dashboard.html">
+
+<i class="bi bi-grid"></i>
+
+<span>Dashboard</span>
+
+</a>
+
+<a href="admin-products.html">
+
+<i class="bi bi-box-seam"></i>
+
+<span>Products</span>
+
+</a>
+
+<a href="admin-users.html">
+
+<i class="bi bi-people"></i>
+
+<span>Users</span>
+
+</a>
+
+<a href="admin-orders.html" class="active">
+
+<i class="bi bi-cart3"></i>
+
+<span>Orders</span>
+
+</a>
+
+</div>
+
+</div>
+
+<div class="logout" id="logoutBtn">
+
+Logout
+
+</div>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<div class="topbar">
+
+<div class="title">
+
+<h1>
+
+Order Management
+
+</h1>
+
+<p>
+
+Manage customer orders efficiently
+
+</p>
+
+</div>
+
+<div class="right">
+
+<div class="search">
+
+<i class="bi bi-search"></i>
+
+<input
+
+type="text"
+
+id="searchInput"
+
+placeholder="Search orders...">
+
+</div>
+
+<div class="profile">
+
+<div class="avatar">
+
+N
+
+</div>
+
+<div>
+
+<b>Niranjan</b>
+
+<br>
+
+<small style="color:#94a3b8">
+
+Administrator
+
+</small>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-header">
+
+<h2>
+
+All Orders
+
+</h2>
+
+<div class="totalOrders">
+
+Total :
+<span id="orderCount">0</span>
+
+</div>
+
+</div>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>#</th>
+
+<th>Customer</th>
+
+<th>Email</th>
+
+<th>Total</th>
+
+<th>Status</th>
+
+<th>Date</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="orderTable">
+
+<!-- Orders will load here -->
+
+<tr>
+
+<td colspan="7"
+
+style="text-align:center;padding:40px;color:#94a3b8;">
+
+Loading Orders...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SweetAlert -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Admin Orders JS -->
+
+<script src="js/admin-orders.js"></script>
+
+</body>
+
+</html>

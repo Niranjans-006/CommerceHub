@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CommerceHub | Checkout</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+
+background:#0b1120;
+
+color:#fff;
+
+min-height:100vh;
+
+}
+
+.container{
+
+width:92%;
+
+max-width:1400px;
+
+margin:auto;
+
+padding:40px 0;
+
+}
+
+/* ======================= */
+
+.header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:40px;
+
+}
+
+.logo{
+
+font-size:34px;
+
+font-weight:800;
+
+}
+
+.logo span{
+
+color:#ff5b2e;
+
+}
+
+.back-btn{
+
+padding:13px 22px;
+
+background:#1f2937;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:12px;
+
+transition:.3s;
+
+font-weight:600;
+
+}
+
+.back-btn:hover{
+
+background:#374151;
+
+}
+
+/* ======================= */
+
+.checkout{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:35px;
+
+align-items:start;
+
+}
+
+/* ======================= */
+
+.card{
+
+background:#111827;
+
+padding:30px;
+
+border-radius:22px;
+
+box-shadow:0 18px 40px rgba(0,0,0,.35);
+
+margin-bottom:25px;
+
+}
+
+.card h2{
+
+margin-bottom:25px;
+
+font-size:24px;
+
+font-weight:700;
+
+}
+
+/* ======================= */
+
+.form-group{
+
+margin-bottom:22px;
+
+}
+
+.form-group label{
+
+display:block;
+
+margin-bottom:8px;
+
+font-weight:600;
+
+color:#d1d5db;
+
+}
+
+.form-group input,
+
+.form-group textarea{
+
+width:100%;
+
+padding:15px;
+
+background:#1f2937;
+
+border:2px solid transparent;
+
+border-radius:14px;
+
+outline:none;
+
+color:white;
+
+font-size:15px;
+
+transition:.3s;
+
+}
+
+.form-group textarea{
+
+height:120px;
+
+resize:none;
+
+}
+
+.form-group input:focus,
+
+.form-group textarea:focus{
+
+border-color:#ff5b2e;
+
+}
+
+/* ======================= */
+
+.payment{
+
+display:flex;
+
+flex-direction:column;
+
+gap:16px;
+
+}
+
+.payment-option{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+padding:18px;
+
+background:#1f2937;
+
+border-radius:14px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.payment-option:hover{
+
+background:#293548;
+
+}
+
+.payment-option input{
+
+transform:scale(1.15);
+
+accent-color:#ff5b2e;
+
+}
+/* ======================= */
+/* Order Summary */
+/* ======================= */
+
+.summary-item{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:16px 0;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+font-size:15px;
+
+}
+
+.summary-item:last-child{
+
+border-bottom:none;
+
+}
+
+.total{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-top:25px;
+
+font-size:24px;
+
+font-weight:700;
+
+}
+
+.place-order{
+
+width:100%;
+
+margin-top:30px;
+
+padding:16px;
+
+border:none;
+
+border-radius:14px;
+
+background:#ff5b2e;
+
+color:white;
+
+font-size:17px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.place-order:hover{
+
+background:#ff4212;
+
+transform:translateY(-2px);
+
+}
+
+/* ======================= */
+/* Responsive */
+/* ======================= */
+
+@media(max-width:992px){
+
+.checkout{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.header{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:20px;
+
+}
+
+.container{
+
+width:94%;
+
+}
+
+.card{
+
+padding:22px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Header -->
+
+<div class="header">
+
+<div class="logo">
+
+Commerce<span>Hub</span>
+
+</div>
+
+<a href="cart.html" class="back-btn">
+
+<i class="bi bi-arrow-left"></i>
+
+Back To Cart
+
+</a>
+
+</div>
+
+<div class="checkout">
+
+<!-- Left Section -->
+
+<div>
+
+<div class="card">
+
+<h2>
+
+Customer Details
+
+</h2>
+
+<div class="form-group">
+
+<label>
+
+Full Name
+
+</label>
+
+<input
+type="text"
+id="fullName"
+placeholder="Enter your full name">
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Email Address
+
+</label>
+
+<input
+type="email"
+id="email"
+placeholder="Enter your email">
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Phone Number
+
+</label>
+
+<input
+type="text"
+id="phone"
+placeholder="Enter your phone number">
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Delivery Address
+
+</label>
+
+<textarea
+id="address"
+placeholder="Enter your delivery address"></textarea>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+Payment Method
+
+</h2>
+
+<div class="payment">
+
+<label class="payment-option">
+
+<input
+type="radio"
+name="payment"
+value="COD"
+checked>
+
+Cash On Delivery
+
+</label>
+
+<label class="payment-option">
+
+<input
+type="radio"
+name="payment"
+value="UPI">
+
+UPI Payment
+
+</label>
+
+<label class="payment-option">
+
+<input
+type="radio"
+name="payment"
+value="CARD">
+
+Credit / Debit Card
+
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Right Section -->
+
+<div>
+
+<div class="card">
+
+<h2>
+
+Order Summary
+
+</h2>
+
+<div id="summaryItems">
+
+<div class="summary-item">
+
+<span>
+
+Loading...
+
+</span>
+
+<span>
+
+₹0
+
+</span>
+
+</div>
+
+</div>
+<div class="summary-item">
+
+<span>
+
+Shipping
+
+</span>
+
+<span>
+
+FREE
+
+</span>
+
+</div>
+
+<div class="total">
+
+<span>
+
+Total
+
+</span>
+
+<span id="grandTotal">
+
+₹0
+
+</span>
+
+</div>
+
+<button
+
+id="placeOrderBtn"
+
+class="place-order">
+
+Place Order
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="js/checkout.js"></script>
+
+</body>
+
+</html>

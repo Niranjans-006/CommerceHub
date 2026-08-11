@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - CommerceHub</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <div class="search-header">
+                <i class="bi bi-search"></i>
+                <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
+                <button id="closeSearch"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="header-top"><div class="container"><p>Free shipping on orders over ₹999</p></div></div>
+        <div class="header-main">
+            <div class="container">
+                <div class="header-wrapper">
+                    <div class="logo"><a href="index.html">Commerce<span>Hub</span></a></div>
+                    <nav class="nav">
+                        <ul class="nav-list">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="shop.html">Shop</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <div class="header-actions">
+                        <button class="search-btn" id="searchBtn"><i class="bi bi-search"></i></button>
+                        <a href="login.html" class="user-btn"><i class="bi bi-person"></i></a>
+                        <a href="wishlist.html" class="wishlist-btn"><i class="bi bi-heart"></i><span class="count" id="wishlist-count">0</span></a>
+                        <a href="cart.html" class="cart-btn"><i class="bi bi-bag"></i><span class="count" id="cart-count">0</span></a>
+                        <button class="mobile-menu-toggle"><i class="bi bi-list"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="breadcrumb">
+        <div class="container"><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li id="breadcrumb-product">Product</li></ul></div>
+    </section>
+
+    <section class="product-detail">
+        <div class="container">
+            <div id="product-detail-content" class="product-detail-wrapper">
+                <div class="loading">Loading...</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="container">
+            <div class="section-title"><h2>You May Also Like</h2></div>
+            <div class="product-wrapper product-carousel3">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="product-list glide__slides" id="related-products-list"></ul>
+                </div>
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="bi bi-chevron-left"></i></button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="bi bi-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><div class="footer-logo"><a href="index.html">Commerce<span>Hub</span></a></div><p>Your one-stop destination.</p></div>
+                <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div class="footer-col"><h4>Customer Service</h4><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li></ul></div>
+                <div class="footer-col"><h4>Newsletter</h4><form class="newsletter-form"><input type="email" placeholder="Email"><button type="submit"><i class="bi bi-send"></i></button></form></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 CommerceHub</p></div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+    <script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/product-detail.js"></script>
+</body>
+</html>
